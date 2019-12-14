@@ -47,6 +47,12 @@ class Word {
             rejection => { console.log(`word ${val}s not found`) }
         )
     }
+    printDictionary(){
+        this.printDefinitions();
+        this.printRelatedWords('synonym');
+        this.printRelatedWords('antonym');
+        this.printExamples();
+    }
 }
 
 module.exports = { Word }
