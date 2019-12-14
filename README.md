@@ -24,7 +24,7 @@ b. dict syn 'word'<br/>
 c. dict ant 'word'<br/>
 d. dict ex 'word'<br/>
 e. dict 'word'<br/>
-f. dict<br/>"
+f. dict<br/>
 g. dict play<br/>
 
 Example: 'dict ant single' command to fetch all antonyms of the word single
