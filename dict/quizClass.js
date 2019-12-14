@@ -4,7 +4,42 @@ var requestFunctions = require('./request');
 class QuizClass extends Word {
     constructor(word) {
         super(word)
+        this.invalidAnswer = new Set();
     }
+    getRandomClue(val) {
+        let temp = Math.floor(Math.random() * (val));
+        switch (temp) {
+            case 0: return "Definition: " + this.definitions[Math.floor(Math.random() * (this.definitions.length))]
+            case 1:
+                if (this.antonyms.length != 0) {
+                    return "Antonym: " + this.antonyms[Math.floor(Math.random() * (this.antonyms.length))]
+                }
+                else {
+
+                }
+            case 2: {
+                let syn = this.synonyms[Math.floor(Math.random() * this.synonyms.length)]
+                this.invalidAnswer.add(syn);
+                return "Synonym: " + syn;
+
+            }
+            case 3: return "Anagram: " +this.getAnagram();
+        }
+    }
+    getAnagram() {
+        return this.word.split('').sort(function(){return 0.5-Math.random()}).join('');
+
+    }
+    checkRightAnswer(word) {
+        console
+        if (word == this.word || this.synonyms.includes(word)) {
+            if (!this.invalidAnswer.has(word))
+                return true
+            else
+                return false
+        } else { return false }
+    }
+
     getAllWordData() {
         let funcComp = new Promise((resolve, reject) => {
             try {
