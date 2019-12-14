@@ -5,6 +5,7 @@ const Word = require('./wordClass').Word;
 const input_console = process.argv;
 
 switch (input_console.length) {
+    //for getting word of the day
     case 2: {
         requestFunctions.getRandomWord().then(response => {
             console.log("Your Word of the day is " + response.data.word);
@@ -13,10 +14,18 @@ switch (input_console.length) {
         })
     }
         break;
+    //for starting quiz or getting full dictionary entry for a word
     case 3: {
+        if (input_console[2] == "play") {
 
+        }
+        else {
+            let newWord = new Word(input_console[2]);
+            newWord.printDictionary();
+        }
     }
         break;
+    //for keywords defn, syn, ant and ex
     case 4: {
         let newWord = new Word(input_console[3])
         if (input_console[2] == "defn") { newWord.printDefinitions() }
